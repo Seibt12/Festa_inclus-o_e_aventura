@@ -131,14 +131,8 @@
     <input type="text" name="nome" placeholder="Digite seu nome" required>
 
     <label>Quantas pessoas vão com você? (Tirando você)</label>
-    <select name="pessoas" required>
-      <option value="" disabled selected>Selecione</option>
-      <option value="APENAS EU">APENAS EU</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4+">4 ou mais</option>
-    </select>
+<input type="number" name="pessoas" placeholder="Ex: 0, 1, 2, 3..." min="0" required>
+
 
     <button type="submit">Confirmar Presença</button>
   </form>
