@@ -5,14 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirmação de Presença - Festa Inclusão e Aventura 🎉</title>
   <style>
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #007bff, #ffd700);
-      color: #333;
-      text-align: center;
-      padding: 30px;
-      min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  background: 
+    linear-gradient(
+      rgba(1, 1, 185, 0.768),   
+      rgba(255, 255, 0, 0.45)  
+    ),
+    url('banner.png');  
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+
+  color: #10e746;
+  text-align: center;
+  padding: 30px;
+  min-height: 100vh;
     }
+
 
     h1 {
       color: white;
@@ -20,10 +35,21 @@
       margin-bottom: 10px;
     }
 
-    p {
+    h2 {
+      color: rgb(255, 255, 255);
+      margin-bottom: 10px;
+    } 
+
+    p1 {
       color: #fff;
       font-size: 18px;
       margin-bottom: 30px;
+    }
+
+    p2 {
+      color: rgb(255, 255, 255);
+      font-size: 20px;
+      margin-bottom: 20px;
     }
 
     form {
@@ -53,17 +79,6 @@
       box-sizing: border-box;
     }
 
-    input[type="radio"] {
-      width: auto;
-      margin-right: 8px;
-    }
-
-    .radio-group {
-      text-align: left;
-      margin-top: 5px;
-      color: #333;
-    }
-
     button {
       background-color: #0056b3;
       color: white;
@@ -75,33 +90,45 @@
       transition: 0.3s;
     }
 
-    button:hover {
-      background-color: #003f88;
+    .aviso-block {
+      background: #ff4444;
+      color: white;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px auto;
+      max-width: 420px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
     }
 
     footer {
-      margin-top: 30px;
-      color: #fff;
-      font-size: 15px;
+      margin-top: 10px;
+      font-size: 16px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
   </style>
 </head>
+
+
 <body>
   <h1>🎉 Festa Inclusão e Aventura 🎉</h1>
-  <p><strong>📅 Dia:</strong> 07/12 | <strong>⏰ Horário:</strong> 12h às 20h<br>
-     <strong>📍 Local:</strong> Rancho Santana<br>
-     <strong>👤 Organizador:</strong> Luis Seibt</p>
+  <p1><strong>📅 Dia:</strong> 07/12 | <strong>⏰ Horário:</strong> 13h às 19h<br>
+     <strong>Local:</strong> Rancho Santana - Piraquara/PR</p1>
+  <a href="https://www.google.com/maps/@-25.5307207,-49.06808,3a,75y,74.24h,79.73t/data=!3m7!1e1!3m5!1sfq1P-IUGM3s7cRWYh19_mg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D10.267621721732397%26panoid%3Dfq1P-IUGM3s7cRWYh19_mg%26yaw%3D74.24447874942739!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MTExMS4wIKXMDSoASAFQAw%3D%3D" 
+     target="_blank"
+     style="margin-left: 10px; background: #4285F4; color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 14px;">
+      Abrir no Maps
+  </a>
+
+  <h2>🚨ATENÇÃO🚨</h2>
+  <p2><strong>CONFIRMAR PRESENÇA ATÉ O DIA 01/12</strong></p2>
 
   <form id="form">
     <label>Nome completo:</label>
     <input type="text" name="nome" placeholder="Digite seu nome" required>
-
-    <label>Você vai à festa?</label>
-    <div class="radio-group">
-      <input type="radio" name="presenca" value="Sim" required> Sim, estarei lá! 🎊<br>
-      <input type="radio" name="presenca" value="Não"> Infelizmente não poderei 😞
-    </div>
 
     <label>Quantas pessoas vão com você? (Tirando você)</label>
     <select name="pessoas" required>
@@ -121,23 +148,36 @@
   </footer>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwWhJweTeJZT9sm01Hpe1uTbMEFy1yOMsV7OubuR9SrmDYnSBx4CeSrQBr-ycxVkcGJ/exec";
-
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz9BPlHDO6vrhxr3Hoq-35Q-UlTHfG0t54a2Hq88ELmG5_jJ71g01PgSmuxWeM8tL0o/exec";
     const form = document.getElementById("form");
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    const dataLimite = new Date("2025-12-02T00:00:00");
+    const agora = new Date();
 
-      fetch(scriptURL, {
-        method: "POST",
-        body: new FormData(form),
-      })
-        .then(() => {
-          alert("🎉 Presença confirmada com sucesso! Obrigado por participar 💛💙");
-          form.reset();
+    if (agora >= dataLimite) {
+      form.style.display = "none";
+
+      const aviso = document.createElement("div");
+      aviso.className = "aviso-block";
+      aviso.textContent = "⛔ O prazo para confirmar presença já passou. (Data limite: 30/11)";
+      document.body.insertBefore(aviso, document.body.children[3]);
+    } else {
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
         })
-        .catch((error) => alert("Erro ao enviar. Tente novamente.\n\n" + error.message));
-    });
+          .then(() => {
+            alert("🎉 Presença confirmada com sucesso! Obrigado por participar 💛💙");
+            form.reset();
+          })
+          .catch((error) => alert("Erro ao enviar. Tente novamente.\n\n" + error.message));
+      });
+    }
   </script>
+
 </body>
 </html>
